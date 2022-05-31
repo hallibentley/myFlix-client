@@ -1,6 +1,5 @@
-import propTypes from 'prop-types';
 import React from 'react';
-inport PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export class MovieCard extends React.Component {
 
