@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
+import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
@@ -13,7 +14,8 @@ export class MainView extends React.Component {
     this.state = {
       movies: [],
       selectedMovie: null,
-      user: null
+      user: null,
+      registered: null
     };
   }
 
@@ -40,6 +42,13 @@ export class MainView extends React.Component {
       user
     });
   }
+
+  onRegister(registered) {
+    this.setState({
+      registered
+    });
+  }
+
 
   render() {
     const { movies, selectedMovie, user } = this.state;
