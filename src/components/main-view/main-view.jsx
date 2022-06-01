@@ -3,12 +3,15 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Navbar } from 'react-bootstrap/Navbar';
 
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
+import './main-view.scss';
+import { Navbar } from 'react-bootstrap';
 
 export class MainView extends React.Component {
 
