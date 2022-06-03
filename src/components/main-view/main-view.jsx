@@ -24,15 +24,13 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://hallibentley-movie-api.herokuapp.com/movies')
-      .then(response => {
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
       });
+      this.getMovies(accessToken);
+    }
   }
 
   getMovies(token) {
@@ -66,11 +64,21 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
+    });
+  }
+
   onRegister(registered) {
     this.setState({
       registered
     });
   }
+
+
 
   render() {
     const { movies, selectedMovie, user } = this.state;
@@ -80,20 +88,23 @@ export class MainView extends React.Component {
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
-      <Row className="main-view justify-content-md-center">
-        {selectedMovie
-          ? (
-            <Col md={8}>
-              <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
-            </Col>
-          )
-          : movies.map(movie => (
-            <Col md={3}>
-              <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
-            </Col>
-          ))
-        }
-      </Row>
+      <React.Fragment>
+        <Row className="main-view justify-content-md-center">
+          {selectedMovie
+            ? (
+              <Col md={8}>
+                <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+              </Col>
+            )
+            : movies.map(movie => (
+              <Col md={3}>
+                <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
+              </Col>
+            ))
+          }
+        </Row>
+        <button onClick={() => { this.onLoggedOut() }}>Logout</button>
+      </React.Fragment>
     );
   }
 
