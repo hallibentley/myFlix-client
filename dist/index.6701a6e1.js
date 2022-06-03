@@ -41938,7 +41938,7 @@ class MovieCard extends _reactDefault.default.Component {
                 /*#__PURE__*/ _jsxRuntime.jsx(_cardDefault.default.Img, {
                     variant: "top",
                     src: movie.ImagePath,
-                    cossOrigin: "anonymous",
+                    crossOrigin: "anonymous",
                     __source: {
                         fileName: "src/components/movie-card/movie-card.jsx",
                         lineNumber: 15
