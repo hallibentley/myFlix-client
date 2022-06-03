@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Row, Col } from 'react-bootstrap';
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
@@ -17,20 +18,10 @@ export class MainView extends React.Component {
     super();
     this.state = {
       movies: [],
-      selectedMovie: null,
-      user: null,
-      registered: null
+      user: null
+      // selectedMovie: null,
+      // registered: null
     };
-  }
-
-  componentDidMount() {
-    let accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user')
-      });
-      this.getMovies(accessToken);
-    }
   }
 
   getMovies(token) {
@@ -47,10 +38,14 @@ export class MainView extends React.Component {
       });
   }
 
-  setSelectedMovie(movie) {
-    this.setState({
-      selectedMovie: movie
-    });
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
+      });
+      this.getMovies(accessToken);
+    }
   }
 
   onLoggedIn(authData) {
@@ -64,47 +59,84 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-  onLoggedOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.setState({
-      user: null
-    });
-  }
+  // onLoggedOut() {
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('user');
+  //   this.setState({
+  //     user: null
+  //   });
+  // }
 
-  onRegister(registered) {
-    this.setState({
-      registered
-    });
-  }
+  // setSelectedMovie(movie) {
+  //   this.setState({
+  //     selectedMovie: movie
+  //   });
+  // }
+
+  // onRegister(registered) {
+  //   this.setState({
+  //     registered
+  //   });
+  // }
 
 
+
+  // render() {
+  //   const { movies, user } = this.state;
+
+  //   if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+
+  //   if (movies.length === 0) return <div className="main-view" />;
+
+  //   return (
+  //     <React.Fragment>
+  //       <Row className="main-view justify-content-md-center">
+  //         {selectedMovie
+  //           ? (
+  //             <Col md={8}>
+  //               <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+  //             </Col>
+  //           )
+  //           : movies.map(movie => (
+  //             <Col md={3}>
+  //               <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
+  //             </Col>
+  //           ))
+  //         }
+  //       </Row>
+  //       <button onClick={() => { this.onLoggedOut() }}>Logout</button>
+  //     </React.Fragment>
+  //   );
+  // }
 
   render() {
-    const { movies, selectedMovie, user } = this.state;
+    const { movies, user } = this.state;
 
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-
+    if (!user) return <Row>
+      <Col>
+        <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+      </Col>
+    </Row>
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
-      <React.Fragment>
+      <Router>
         <Row className="main-view justify-content-md-center">
-          {selectedMovie
-            ? (
-              <Col md={8}>
-                <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
-              </Col>
-            )
-            : movies.map(movie => (
-              <Col md={3}>
-                <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
+          <Route exact path="/" render={() => {
+            return movies.map(m => (
+              <Col md={3} key={m._id}>
+                <MovieCard movie={m} />
               </Col>
             ))
-          }
+          }} />
+          <Route path="/movies/:movieId" render={({ match }) => {
+            return <Col md={8}>
+              <MovieView movie={movies.find(m => m._id === match.params.movieId)} />
+            </Col>
+          }} />
+
         </Row>
-        <button onClick={() => { this.onLoggedOut() }}>Logout</button>
-      </React.Fragment>
+      </Router>
     );
   }
 
