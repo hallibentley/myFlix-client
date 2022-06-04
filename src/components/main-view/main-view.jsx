@@ -122,7 +122,7 @@ export class MainView extends React.Component {
     return (
       <Router>
         <Row className="main-view justify-content-md-center">
-          <Route exact path="/" render={() => {
+          <Route exact path="/" render={(/*welcome*/) => {
             return movies.map(m => (
               <Col md={3} key={m._id}>
                 <MovieCard movie={m} />
@@ -134,7 +134,20 @@ export class MainView extends React.Component {
               <MovieView movie={movies.find(m => m._id === match.params.movieId)} />
             </Col>
           }} />
-
+          <Route exact path="/directors/:name" render={({ match }) => {
+            if (movies.length === 0)
+              return <div className="main-view" />;
+            return <Col md={8}>
+              <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+            </Col>
+          }} />
+          <Route exact path="/genres/:name" render={({ match }) => {
+            if (movies.length === 0)
+              return <div className="main-view" />;
+            return <Col md={8}>
+              <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />
+            </Col>
+          }} />
         </Row>
       </Router>
     );
