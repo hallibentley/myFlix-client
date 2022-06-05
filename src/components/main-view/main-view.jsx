@@ -1,9 +1,10 @@
 import React from 'react';
+import { Row, Col } from 'react-bootstrap';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-bootstrap';
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+
 
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';

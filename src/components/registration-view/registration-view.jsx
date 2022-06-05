@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Row, Col, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
-import { Row, Col, Button, Container, Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+
 import './registration-view.scss';
 
 export function RegistrationView(props) {
