@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Row, Col, Button, Form } from 'react-bootstrap';
+import { Button, Form, FormGroup } from 'react-bootstrap';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 
 import './login-view.scss';
 
@@ -9,24 +8,46 @@ export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const [usernameErr, setUsernameErr] = useState('');
+  const [passwordErr, setPasswordErr] = useState('');
+
+  const validate = () => {
+    let isReq = true;
+    if (!username) {
+      setUsernameErr('Username is required');
+      isReq = false;
+    } else if (username.length < 5) {
+      setUsernameErr('Username must be at least 5 characters long')
+      isReq = false;
+    }
+    if (!password) {
+      setPasswordErr('Password is required');
+      isReq = false;
+    }
+    return isReq;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://hallibentley-movie-api.herokuapp.com/login', {
-      Username: username,
-      Password: password
-    })
-      .then(response => {
-        const data = response.data;
-        props.onLoggedIn(data);
+    const isReq = validate();
+    if (isReq) {
+      axios.post('https://hallibentley-movie-api.herokuapp.com/login', {
+        Username: username,
+        Password: password
       })
-      .catch(e => {
-        console.log('no such user')
-      });
+        .then(response => {
+          const data = response.data;
+          props.onLoggedIn(data);
+        })
+        .catch(e => {
+          console.log('no such user')
+        });
+    }
   };
 
   return (
-    <Form>
-      <Form.Group controlId="formUsername">
+    <Form className="login-form">
+      <FormGroup className="form-group" controlId="formUsername">
         <Form.Label>Username:</Form.Label>
         <Form.Control
           type="text"
@@ -34,9 +55,10 @@ export function LoginView(props) {
           required
           placeholder="Enter your username"
         />
-      </Form.Group>
+        {usernameErr && <p>{usernameErr}</p>}
+      </FormGroup>
 
-      <Form.Group controlId="formPassword">
+      <FormGroup className="form-group" controlId="formPassword">
         <Form.Label>Password:</Form.Label>
         <Form.Control
           type="text"
@@ -44,9 +66,10 @@ export function LoginView(props) {
           required
           placeholder="Enter your password"
         />
-      </Form.Group>
+        {passwordErr && <p>{passwordErr}</p>}
+      </FormGroup>
       <Button variant="primary" type="submit" onClick={handleSubmit}>
-        Submit
+        Log in
       </Button>
     </Form>
   );
