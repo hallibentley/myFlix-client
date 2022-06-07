@@ -89,14 +89,14 @@ export class MainView extends React.Component {
               ))
             }} />
 
-            <Route path="/register" render={() => {
+            <Route exact path="/register" render={() => {
               if (user) return <Redirect to="/" />
               return <Col>
                 <RegistrationView />
               </Col>
             }} />
 
-            <Route path="/movies/:movieId" render={({ match, history }) => {
+            <Route exact path="/movies/:movieId" render={({ match, history }) => {
               if (!user) return <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>
@@ -106,7 +106,7 @@ export class MainView extends React.Component {
               </Col>
             }} />
 
-            <Route path="/directors/:name" render={({ match, history }) => {
+            <Route exact path="/movies/directors/:name" render={({ match, history }) => {
               if (!user) return <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>
@@ -116,7 +116,7 @@ export class MainView extends React.Component {
               </Col>
             }} />
 
-            <Route path="/genres/:name" render={({ match, history }) => {
+            <Route exact path="/movies/genres/:name" render={({ match, history }) => {
               if (!user) return <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>
@@ -126,7 +126,7 @@ export class MainView extends React.Component {
               </Col>
             }} />
 
-            <Route path="/users/:username" render={({ history }) => {
+            <Route exact path="/users/:username" render={({ history }) => {
               if (!user) return <Redirect to="/" />
               return <Col>
                 <ProfileView user={user} history={history} movies={movies} onBackClick={() => history.goBack()} />
