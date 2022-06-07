@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardGroup, Button } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 import './director-view.scss';
@@ -18,7 +19,6 @@ export class DirectorView extends React.Component {
             <Card.Text>Date of Death: {director.Death}</Card.Text>
             <Card.Text>Bio: {director.Bio}</Card.Text>
           </CardGroup>
-
           <Button onClick={() => onBackClick()} variant="link">Back</Button>
         </Card.Body>
       </Card>

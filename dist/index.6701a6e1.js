@@ -44723,6 +44723,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactBootstrap = require("react-bootstrap");
+var _reactRouterDom = require("react-router-dom");
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _directorViewScss = require("./director-view.scss");
@@ -44733,20 +44734,20 @@ class DirectorView extends _reactDefault.default.Component {
             className: "directorCard",
             __source: {
                 fileName: "src/components/director-view/director-view.jsx",
-                lineNumber: 13
+                lineNumber: 14
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
                 __source: {
                     fileName: "src/components/director-view/director-view.jsx",
-                    lineNumber: 14
+                    lineNumber: 15
                 },
                 __self: this,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Title, {
                         __source: {
                             fileName: "src/components/director-view/director-view.jsx",
-                            lineNumber: 15
+                            lineNumber: 16
                         },
                         __self: this,
                         children: director.Name
@@ -44754,14 +44755,14 @@ class DirectorView extends _reactDefault.default.Component {
                     /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.CardGroup, {
                         __source: {
                             fileName: "src/components/director-view/director-view.jsx",
-                            lineNumber: 16
+                            lineNumber: 17
                         },
                         __self: this,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Text, {
                                 __source: {
                                     fileName: "src/components/director-view/director-view.jsx",
-                                    lineNumber: 17
+                                    lineNumber: 18
                                 },
                                 __self: this,
                                 children: [
@@ -44772,7 +44773,7 @@ class DirectorView extends _reactDefault.default.Component {
                             /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Text, {
                                 __source: {
                                     fileName: "src/components/director-view/director-view.jsx",
-                                    lineNumber: 18
+                                    lineNumber: 19
                                 },
                                 __self: this,
                                 children: [
@@ -44783,7 +44784,7 @@ class DirectorView extends _reactDefault.default.Component {
                             /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Text, {
                                 __source: {
                                     fileName: "src/components/director-view/director-view.jsx",
-                                    lineNumber: 19
+                                    lineNumber: 20
                                 },
                                 __self: this,
                                 children: [
@@ -44815,7 +44816,7 @@ class DirectorView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","./director-view.scss":"hWS1b","@parcel/transformer-js/src/esmodule-helpers.js":"15Vud","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ioxWV","prop-types":"1tgq3"}],"hWS1b":[function() {},{}],"8WCoL":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","./director-view.scss":"hWS1b","@parcel/transformer-js/src/esmodule-helpers.js":"15Vud","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ioxWV","prop-types":"1tgq3","react-router-dom":"cpyQW"}],"hWS1b":[function() {},{}],"8WCoL":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$5f0a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -44830,6 +44831,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactBootstrap = require("react-bootstrap");
+var _reactRouterDom = require("react-router-dom");
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _genreViewScss = require("./genre-view.scss");
@@ -44840,20 +44842,20 @@ class GenreView extends _reactDefault.default.Component {
             className: "genreCard",
             __source: {
                 fileName: "src/components/genre-view/genre-view.jsx",
-                lineNumber: 13
+                lineNumber: 14
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
                 __source: {
                     fileName: "src/components/genre-view/genre-view.jsx",
-                    lineNumber: 14
+                    lineNumber: 15
                 },
                 __self: this,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Title, {
                         __source: {
                             fileName: "src/components/genre-view/genre-view.jsx",
-                            lineNumber: 15
+                            lineNumber: 16
                         },
                         __self: this,
                         children: genre.Name
@@ -44861,7 +44863,7 @@ class GenreView extends _reactDefault.default.Component {
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Text, {
                         __source: {
                             fileName: "src/components/genre-view/genre-view.jsx",
-                            lineNumber: 16
+                            lineNumber: 17
                         },
                         __self: this,
                         children: genre.Description
@@ -44872,7 +44874,7 @@ class GenreView extends _reactDefault.default.Component {
                         variant: "link",
                         __source: {
                             fileName: "src/components/genre-view/genre-view.jsx",
-                            lineNumber: 17
+                            lineNumber: 18
                         },
                         __self: this,
                         children: "Back"
@@ -44888,7 +44890,7 @@ class GenreView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","./genre-view.scss":"3BqnD","@parcel/transformer-js/src/esmodule-helpers.js":"15Vud","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ioxWV","prop-types":"1tgq3"}],"3BqnD":[function() {},{}],"2E7Aw":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","./genre-view.scss":"3BqnD","@parcel/transformer-js/src/esmodule-helpers.js":"15Vud","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ioxWV","prop-types":"1tgq3","react-router-dom":"cpyQW"}],"3BqnD":[function() {},{}],"2E7Aw":[function(require,module,exports) {
 
 },{}],"jUTZ8":[function() {},{}]},["7whdk","dFEtV","dLPEP"], "dLPEP", "parcelRequireaec4")
 
