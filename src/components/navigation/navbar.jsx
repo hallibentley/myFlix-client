@@ -1,5 +1,7 @@
 import React from 'react';
-import { Container, Row, Col, Button, Navbar, Nav } from 'react-bootstrap';
+import { Container, Button, Navbar, Nav } from 'react-bootstrap';
+
+import './navbar.scss'
 
 export function MenuBar({ user }) {
   const onLoggedOut = () => {
@@ -19,7 +21,7 @@ export function MenuBar({ user }) {
   };
 
   return (
-    <Navbar className="main-nav" sticky="top" bg="dark" expand="lg" variant="dark">
+    <Navbar className="main-nav" sticky="top" bg="light" expand="lg" variant="light">
       <Container>
         <Navbar.Brand className="navbar-logo" href="/">
           MyFlixCinema
