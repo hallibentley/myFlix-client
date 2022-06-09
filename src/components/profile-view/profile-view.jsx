@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './profile-view.scss';
 
-export function ProfileView({ }) {
+export function ProfileView() {
   const [username, setUsername] = useState(' ');
   const [password, setPassword] = useState(' ');
   const [email, setEmail] = useState(' ');
@@ -28,8 +28,32 @@ export function ProfileView({ }) {
       });
   }
 
+  //client request to update//
+  const updateuser = () => {
+    axios.put(`https://hallibentley-movie-api.herokuapp.com/users/${user}`,
+      {
+        Username: username,
+        Password: password,
+        Email: email,
+        Birthday: birthday
+      },
+
+
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then(() => {
+        alert(`Your account was successfully updated`);
+      })
+      .catch(error => {
+        console.error(error);
+        alert('Unable to update profile.');
+      });
+  }
+
+
   const deleteUser = () => {
-    axios.delete(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}`,
+    axios.delete(`https://hallibentley-movie-api.herokuapp.com/users/${user}`,
       {
         headers: { Authorization: `Bearer ${token}` }
       })
@@ -106,5 +130,4 @@ export function ProfileView({ }) {
 
     </React.Fragment>
   )
-
 }
