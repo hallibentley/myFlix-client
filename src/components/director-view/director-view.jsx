@@ -1,7 +1,5 @@
 import React from 'react';
 import { Card, CardGroup, Button } from 'react-bootstrap';
-import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
 
 import './director-view.scss';
 

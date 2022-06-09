@@ -4,6 +4,7 @@ import { Container, Button, Navbar, Nav } from 'react-bootstrap';
 import './navbar.scss'
 
 export function MenuBar({ user }) {
+
   const onLoggedOut = () => {
     localStorage.clear();
     window.open("/,", "_self");
@@ -21,7 +22,7 @@ export function MenuBar({ user }) {
   };
 
   return (
-    <Navbar className="main-nav" sticky="top" bg="light" expand="lg" variant="light">
+    <Navbar className="main-nav" sticky="top" expand="lg" variant="dark" bg="dark">
       <Container>
         <Navbar.Brand className="navbar-logo" href="/">
           MyFlixCinema
