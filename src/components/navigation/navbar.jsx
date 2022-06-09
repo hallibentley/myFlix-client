@@ -22,7 +22,7 @@ export function MenuBar({ user }) {
   };
 
   return (
-    <Navbar className="main-nav" sticky="top" expand="lg" variant="dark" bg="dark">
+    <Navbar className="main-nav" sticky="top" expand="lg" variant="light" bg="light">
       <Container>
         <Navbar.Brand className="navbar-logo" href="/">
           MyFlixCinema
