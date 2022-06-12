@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, CardGroup, Form, FormGroup, Button } from 'react-bootstrap';
+import { Card, Form, FormGroup, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 import './profile-view.scss';
@@ -23,7 +23,6 @@ export function ProfileView() {
         setUsername(response.data.Username)
         setEmail(response.data.Email)
         setBirthday(response.data.Birthday)
-        setFavoriteMovies(response.data.FavoriteMovies)
         console.log(response.data)
       })
       .catch(e => {
@@ -35,9 +34,18 @@ export function ProfileView() {
     getUser()
   }, [])
 
+  const getFavoriteMovies = () => {
+    axios.get(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}`, {
+      headers: { Authorization: `Bearer ${currentToken}` }
+    })
+      .then((response) => {
+        setFavoriteMovies(response.data.FavoriteMovies)
+      })
+  }
+
 
   //client request to update//
-  const updateuser = () => {
+  const updateUser = () => {
     axios.put(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}`,
       {
         Username: username,
@@ -50,6 +58,7 @@ export function ProfileView() {
       })
       .then(() => {
         alert(`Your account was successfully updated`);
+        localStorage.setItem('user', response.data.username)
       })
       .catch(error => {
         console.error(error);
@@ -74,19 +83,23 @@ export function ProfileView() {
 
   return (
     <React.Fragment>
-      <br></br>
-      <br></br>
+
       <Card>
         <Card.Header>Your user info</Card.Header>
         <Card.Body>
           <Card.Text> Username: {username} </Card.Text>
           <Card.Text>Email: {email} </Card.Text>
           <Card.Text>Birthday: {birthday} </Card.Text>
-          <Card.Text>Favorite Movies: {favoriteMovies} </Card.Text>
         </Card.Body>
       </Card>
-      <br></br>
-      <br></br>
+
+      <Card>
+        <Card.Header>Your favorites list</Card.Header>
+        <Card.Body>
+          <Card.Text>{favoriteMovies}</Card.Text>
+        </Card.Body>
+      </Card>
+
       <Card>
         <Form>
           <Card.Header>Update your profile</Card.Header>
@@ -125,8 +138,7 @@ export function ProfileView() {
           <Button>Confirm changes</Button>
         </Form>
       </Card>
-      <br></br>
-      <br></br>
+
       <Card>
         <Card.Header>Delete your account</Card.Header>
         <Card.Body>
