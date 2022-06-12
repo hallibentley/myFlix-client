@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useInsertionEffect, useState } from 'react';
 import { Card, CardGroup, Form, FormGroup, Button } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -15,12 +15,13 @@ export function ProfileView() {
 
   //retrieve user info from localstorage//
   const getUser = () => {
-    axios.get(`https://hallibentley-movie-api.herokuapp.com/users/${user}`, {
+    axios.get(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((response) => {
         setUsername(response.data.Username)
         setEmail(response.data.Email)
+        setBirthday(response.data.Birthday)
         console.log(response.data)
       })
       .catch(e => {
@@ -28,19 +29,22 @@ export function ProfileView() {
       });
   }
 
+  useEffect(() => {
+    getUser()
+  }, [])
+
+
   //client request to update//
   const updateuser = () => {
-    axios.put(`https://hallibentley-movie-api.herokuapp.com/users/${user}`,
+    axios.put(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}`,
       {
         Username: username,
         Password: password,
         Email: email,
         Birthday: birthday
       },
-
-
       {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${currentToken}` }
       })
       .then(() => {
         alert(`Your account was successfully updated`);
@@ -51,11 +55,11 @@ export function ProfileView() {
       });
   }
 
-
+  //client request to delete account//
   const deleteUser = () => {
-    axios.delete(`https://hallibentley-movie-api.herokuapp.com/users/${user}`,
+    axios.delete(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}`,
       {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${currentToken}` }
       })
       .then(() => {
         alert(`The account ${user.Username} was successfully deleted`)
@@ -73,10 +77,10 @@ export function ProfileView() {
       <Card>
         <Card.Header>Your user info</Card.Header>
         <Card.Body>
-          <Card.Text>Username:</Card.Text>
-          <Card.Text>Email:</Card.Text>
-          <Card.Text>Birthday:</Card.Text>
-          <Card.Text>Favorite Movies:</Card.Text>
+          <Card.Text>Username: {username} </Card.Text>
+          <Card.Text>Email: {email} </Card.Text>
+          <Card.Text>Birthday: {birthday} </Card.Text>
+          <Card.Text>Favorite Movies: {favoriteMovies} </Card.Text>
         </Card.Body>
       </Card>
       <br></br>
