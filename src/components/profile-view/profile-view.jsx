@@ -34,6 +34,7 @@ export function ProfileView() {
     getUser()
   }, [])
 
+  //retrieve favorite movies from API//
   const getFavoriteMovies = () => {
     axios.get(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}`, {
       headers: { Authorization: `Bearer ${currentToken}` }
@@ -41,8 +42,14 @@ export function ProfileView() {
       .then((response) => {
         setFavoriteMovies(response.data.FavoriteMovies)
       })
+      .catch(e => {
+        console.log('Error')
+      });
   }
 
+  useEffect(() => {
+    getFavoriteMovies()
+  }, [])
 
   //client request to update//
   const updateUser = () => {
@@ -103,40 +110,43 @@ export function ProfileView() {
       <Card>
         <Form>
           <Card.Header>Update your profile</Card.Header>
-          <FormGroup className='username'>
-            <Form.Label>Username: </Form.Label>
-            <Form.Control
-              onChange={(e) => setUsername(e.target.value)}
-              value={username}
-              type="text"
-              placeholder="username" />
-          </FormGroup>
-          <FormGroup className='email'>
-            <Form.Label>Email: </Form.Label>
-            <Form.Control
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              type="text"
-              placeholder="email" />
-          </FormGroup>
-          <FormGroup className='birthday'>
-            <Form.Label>Birthday: </Form.Label>
-            <Form.Control
-              onChange={(e) => setBirthday(e.target.value)}
-              value={birthday}
-              type="text"
-              placeholder="birthday (YYYY-MM-DD)" />
-          </FormGroup>
-          <FormGroup className='password'>
-            <Form.Label>Password: </Form.Label>
-            <Form.Control
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-              type="text"
-              placeholder="password" />
-          </FormGroup>
-          <Button>Confirm changes</Button>
+          <Card.Body>
+            <FormGroup className='username'>
+              <Form.Label>Username: </Form.Label>
+              <Form.Control
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
+                type="text"
+                placeholder="username" />
+            </FormGroup>
+            <FormGroup className='email'>
+              <Form.Label>Email: </Form.Label>
+              <Form.Control
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                type="text"
+                placeholder="email" />
+            </FormGroup>
+            <FormGroup className='birthday'>
+              <Form.Label>Birthday: </Form.Label>
+              <Form.Control
+                onChange={(e) => setBirthday(e.target.value)}
+                value={birthday}
+                type="text"
+                placeholder="birthday (YYYY-MM-DD)" />
+            </FormGroup>
+            <FormGroup className='password'>
+              <Form.Label>Password: </Form.Label>
+              <Form.Control
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                type="text"
+                placeholder="password" />
+            </FormGroup>
+            <Button>Confirm changes</Button>
+          </Card.Body>
         </Form>
+
       </Card>
 
       <Card>
@@ -146,6 +156,6 @@ export function ProfileView() {
         </Card.Body>
       </Card>
 
-    </React.Fragment>
+    </React.Fragment >
   )
 }
