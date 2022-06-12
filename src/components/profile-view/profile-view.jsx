@@ -1,4 +1,4 @@
-import React, { useInsertionEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardGroup, Form, FormGroup, Button } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -9,6 +9,7 @@ export function ProfileView() {
   const [password, setPassword] = useState(' ');
   const [email, setEmail] = useState(' ');
   const [birthday, setBirthday] = useState(' ');
+  const [favoriteMovies, setFavoriteMovies] = useState(' ');
 
   const currentUser = localStorage.getItem('user');
   const currentToken = localStorage.getItem('token');
@@ -16,12 +17,13 @@ export function ProfileView() {
   //retrieve user info from localstorage//
   const getUser = () => {
     axios.get(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}`, {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${currentToken}` }
     })
       .then((response) => {
         setUsername(response.data.Username)
         setEmail(response.data.Email)
         setBirthday(response.data.Birthday)
+        setFavoriteMovies(response.data.FavoriteMovies)
         console.log(response.data)
       })
       .catch(e => {
@@ -77,7 +79,7 @@ export function ProfileView() {
       <Card>
         <Card.Header>Your user info</Card.Header>
         <Card.Body>
-          <Card.Text>Username: {username} </Card.Text>
+          <Card.Text> Username: {username} </Card.Text>
           <Card.Text>Email: {email} </Card.Text>
           <Card.Text>Birthday: {birthday} </Card.Text>
           <Card.Text>Favorite Movies: {favoriteMovies} </Card.Text>
