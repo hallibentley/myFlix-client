@@ -48,7 +48,7 @@ export function UpdateView(props) {
     const isReq = validate();
     if (isReq) {
       const currentToken = localStorage.getItem('token');
-      axios.put(`https://movime-api.herokuapp.com/users/${user.Username}`, {
+      axios.put(`https://hallibentley-movie-api.herokuapp.com/users/${user.Username}`, {
         Username: username,
         Password: password,
         Email: email,

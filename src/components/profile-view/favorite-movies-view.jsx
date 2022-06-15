@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 import { Button, Card, Row, Col } from 'react-bootstrap';
 
-import { MovieCard } from '../movie-card/movie-card';
 import './profile-view.scss';
 
 export function FavoriteMoviesView(props) {
