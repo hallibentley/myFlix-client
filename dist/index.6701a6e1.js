@@ -45148,6 +45148,7 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
+var _movieCard = require("../movie-card/movie-card");
 var _profileViewScss = require("./profile-view.scss");
 function FavoriteMoviesView(props) {
     const { movies , favoriteMovies , currentUser , currentToken  } = props;
@@ -45168,28 +45169,29 @@ function FavoriteMoviesView(props) {
     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactDefault.default.Fragment, {
         __source: {
             fileName: "src/components/profile-view/favorite-movies-view.jsx",
-            lineNumber: 27
+            lineNumber: 28
         },
         __self: this,
         children: favoriteMoviesList.length === 0 ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
             __source: {
                 fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                lineNumber: 29
+                lineNumber: 30
             },
             __self: this,
             children: "Your favorites list is empty!"
         }) : favoriteMoviesList.map((movie)=>{
             return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                md: 3,
                 __source: {
                     fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                    lineNumber: 33
+                    lineNumber: 34
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card, {
                     id: "movie-card",
                     __source: {
                         fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                        lineNumber: 34
+                        lineNumber: 35
                     },
                     __self: this,
                     children: [
@@ -45197,7 +45199,7 @@ function FavoriteMoviesView(props) {
                             to: `/movies/${movie._id}`,
                             __source: {
                                 fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                                lineNumber: 35
+                                lineNumber: 36
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
@@ -45205,7 +45207,7 @@ function FavoriteMoviesView(props) {
                                 crossOrigin: "anonymous",
                                 __source: {
                                     fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                                    lineNumber: 36
+                                    lineNumber: 37
                                 },
                                 __self: this
                             })
@@ -45213,25 +45215,17 @@ function FavoriteMoviesView(props) {
                         /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
                             __source: {
                                 fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                                lineNumber: 38
+                                lineNumber: 39
                             },
                             __self: this,
                             children: [
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Title, {
                                     __source: {
                                         fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                                        lineNumber: 39
-                                    },
-                                    __self: this,
-                                    children: movie.Title
-                                }),
-                                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Text, {
-                                    __source: {
-                                        fileName: "src/components/profile-view/favorite-movies-view.jsx",
                                         lineNumber: 40
                                     },
                                     __self: this,
-                                    children: movie.Description
+                                    children: movie.Title
                                 }),
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                     to: `/movies/${movie._id}`,
@@ -45264,7 +45258,7 @@ function FavoriteMoviesView(props) {
                         })
                     ]
                 })
-            }));
+            }, movie._id));
         })
     }));
 }
@@ -45277,7 +45271,7 @@ $RefreshReg$(_c, "FavoriteMoviesView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-router-dom":"cpyQW","react-bootstrap":"h2YVd","./profile-view.scss":"gb0ga","@parcel/transformer-js/src/esmodule-helpers.js":"15Vud","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ioxWV"}],"gb0ga":[function() {},{}],"24Lmb":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-router-dom":"cpyQW","react-bootstrap":"h2YVd","./profile-view.scss":"gb0ga","@parcel/transformer-js/src/esmodule-helpers.js":"15Vud","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ioxWV","../movie-card/movie-card":"6EiBJ"}],"gb0ga":[function() {},{}],"24Lmb":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$7b09 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import { Button, Card, Col } from 'react-bootstrap';
+import { Button, Card, Row, Col } from 'react-bootstrap';
 
+import { MovieCard } from '../movie-card/movie-card';
 import './profile-view.scss';
 
 export function FavoriteMoviesView(props) {
@@ -30,14 +31,13 @@ export function FavoriteMoviesView(props) {
       ) : (
         favoriteMoviesList.map((movie) => {
           return (
-            <Col>
+            <Col md={3} key={movie._id}>
               <Card id="movie-card">
                 <Link to={`/movies/${movie._id}`}>
                   <Card.Img src={movie.ImagePath} crossOrigin='anonymous' />
                 </Link>
                 <Card.Body>
                   <Card.Title>{movie.Title}</Card.Title>
-                  <Card.Text>{movie.Description}</Card.Text>
                   <Link to={`/movies/${movie._id}`}>
                     <Button>Open</Button>
                   </Link>
@@ -52,6 +52,6 @@ export function FavoriteMoviesView(props) {
         })
       )
       }
-    </React.Fragment>
+    </React.Fragment >
   )
 }
