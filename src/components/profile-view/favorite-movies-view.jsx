@@ -8,9 +8,8 @@ import './profile-view.scss';
 
 export function FavoriteMoviesView(props) {
   const { movies, favoriteMovies, currentUser, currentToken } = props;
-  const favoriteMoviesId = favoriteMovies.map(m => m._id)
   const favoriteMoviesList = movies.filter(m => {
-    return favoriteMoviesId.includes(m._id)
+    return favoriteMovies.includes(m._id)
   })
 
   const handleMovieDelete = (movieId) => {
@@ -34,7 +33,7 @@ export function FavoriteMoviesView(props) {
             <Col>
               <Card id="movie-card">
                 <Link to={`/movies/${movie._id}`}>
-                  <Card.Img src={movie.ImagePath} />
+                  <Card.Img src={movie.ImagePath} crossOrigin='anonymous' />
                 </Link>
                 <Card.Body>
                   <Card.Title>{movie.Title}</Card.Title>

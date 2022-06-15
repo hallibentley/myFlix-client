@@ -44907,8 +44907,8 @@ var _profileViewScss = require("./profile-view.scss");
 var _s = $RefreshSig$();
 function ProfileView(props) {
     _s();
+    const { movies  } = props;
     const [user, setUser] = _react.useState(props.user);
-    const [movies, setMovies] = _react.useState(props.movies);
     const [favoriteMovies, setFavoriteMovies] = _react.useState([]);
     const [username, setUsername] = _react.useState(' ');
     const [password, setPassword] = _react.useState(' ');
@@ -45120,7 +45120,7 @@ function ProfileView(props) {
         ]
     }));
 }
-_s(ProfileView, "pQGnUEUhm0ws5XMa7lzil60IZmQ=");
+_s(ProfileView, "6xuLgOz3nBC4ZimmKUFt5nGz9Ww=");
 _c = ProfileView;
 var _c;
 $RefreshReg$(_c, "ProfileView");
@@ -45151,10 +45151,8 @@ var _reactBootstrap = require("react-bootstrap");
 var _profileViewScss = require("./profile-view.scss");
 function FavoriteMoviesView(props) {
     const { movies , favoriteMovies , currentUser , currentToken  } = props;
-    const favoriteMoviesId = favoriteMovies.map((m)=>m._id
-    );
     const favoriteMoviesList = movies.filter((m)=>{
-        return favoriteMoviesId.includes(m._id);
+        return favoriteMovies.includes(m._id);
     });
     const handleMovieDelete = (movieId)=>{
         _axiosDefault.default.delete(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}/movies/${movieId}`, {
@@ -45170,13 +45168,13 @@ function FavoriteMoviesView(props) {
     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactDefault.default.Fragment, {
         __source: {
             fileName: "src/components/profile-view/favorite-movies-view.jsx",
-            lineNumber: 28
+            lineNumber: 27
         },
         __self: this,
         children: favoriteMoviesList.length === 0 ? /*#__PURE__*/ _jsxRuntime.jsx("p", {
             __source: {
                 fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                lineNumber: 30
+                lineNumber: 29
             },
             __self: this,
             children: "Your favorites list is empty!"
@@ -45184,14 +45182,14 @@ function FavoriteMoviesView(props) {
             return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                 __source: {
                     fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                    lineNumber: 34
+                    lineNumber: 33
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card, {
                     id: "movie-card",
                     __source: {
                         fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                        lineNumber: 35
+                        lineNumber: 34
                     },
                     __self: this,
                     children: [
@@ -45199,14 +45197,15 @@ function FavoriteMoviesView(props) {
                             to: `/movies/${movie._id}`,
                             __source: {
                                 fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                                lineNumber: 36
+                                lineNumber: 35
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
                                 src: movie.ImagePath,
+                                crossOrigin: "anonymous",
                                 __source: {
                                     fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                                    lineNumber: 37
+                                    lineNumber: 36
                                 },
                                 __self: this
                             })
@@ -45214,14 +45213,14 @@ function FavoriteMoviesView(props) {
                         /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
                             __source: {
                                 fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                                lineNumber: 39
+                                lineNumber: 38
                             },
                             __self: this,
                             children: [
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Title, {
                                     __source: {
                                         fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                                        lineNumber: 40
+                                        lineNumber: 39
                                     },
                                     __self: this,
                                     children: movie.Title
@@ -45229,7 +45228,7 @@ function FavoriteMoviesView(props) {
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Text, {
                                     __source: {
                                         fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                                        lineNumber: 41
+                                        lineNumber: 40
                                     },
                                     __self: this,
                                     children: movie.Description
@@ -45238,13 +45237,13 @@ function FavoriteMoviesView(props) {
                                     to: `/movies/${movie._id}`,
                                     __source: {
                                         fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                                        lineNumber: 42
+                                        lineNumber: 41
                                     },
                                     __self: this,
                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
                                         __source: {
                                             fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                                            lineNumber: 43
+                                            lineNumber: 42
                                         },
                                         __self: this,
                                         children: "Open"
@@ -45256,7 +45255,7 @@ function FavoriteMoviesView(props) {
                                     },
                                     __source: {
                                         fileName: "src/components/profile-view/favorite-movies-view.jsx",
-                                        lineNumber: 45
+                                        lineNumber: 44
                                     },
                                     __self: this,
                                     children: "Remove"

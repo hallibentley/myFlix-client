@@ -9,8 +9,8 @@ import { UpdateView } from './update-view';
 import './profile-view.scss';
 
 export function ProfileView(props) {
+  const { movies } = props;
   const [user, setUser] = useState(props.user);
-  const [movies, setMovies] = useState(props.movies);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
   const [username, setUsername] = useState(' ');
   const [password, setPassword] = useState(' ');
