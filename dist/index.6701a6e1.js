@@ -45189,8 +45189,8 @@ function FavoriteMoviesView(props) {
     const favoriteMoviesList = movies.filter((m)=>{
         return favoriteMovies.includes(m._id);
     });
-    const handleMovieDelete = (movieId)=>{
-        _axiosDefault.default.delete(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}/movies/${movieId}`, {
+    const handleMovieDelete = (movieID)=>{
+        _axiosDefault.default.delete(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}/movies/${movieID}`, {
             headers: {
                 Authorization: `Bearer ${currentToken}`
             }

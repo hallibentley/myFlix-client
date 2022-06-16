@@ -12,8 +12,8 @@ export function FavoriteMoviesView(props) {
     return favoriteMovies.includes(m._id)
   })
 
-  const handleMovieDelete = (movieId) => {
-    axios.delete(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}/movies/${movieId}`, {
+  const handleMovieDelete = (movieID) => {
+    axios.delete(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}/movies/${movieID}`, {
       headers: { Authorization: `Bearer ${currentToken}` }
     })
       .then(() => {
