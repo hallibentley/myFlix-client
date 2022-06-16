@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Card, Form, FormGroup, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Form, FormGroup, Button } from 'react-bootstrap';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
@@ -58,17 +58,38 @@ export function ProfileView(props) {
 
   return (
     <React.Fragment>
+      <Container>
+        <Row>
+          <Col>
+            <Card xs={12}>
+              <Card.Header>Your user info</Card.Header>
+              <Card.Body>
+                <Card.Text> Username: {username} </Card.Text>
+                <Card.Text>Email: {email} </Card.Text>
+                <Card.Text>Birthday: {birthday} </Card.Text>
+              </Card.Body>
+            </Card>
 
-      <Card>
-        <Card.Header>Your user info</Card.Header>
-        <Card.Body>
-          <Card.Text> Username: {username} </Card.Text>
-          <Card.Text>Email: {email} </Card.Text>
-          <Card.Text>Birthday: {birthday} </Card.Text>
-        </Card.Body>
-      </Card>
+            <Card xs={12}>
+              <Card.Header>Delete your account</Card.Header>
+              <Card.Body>
+                <Button onClick={handleDelete}>Delete account</Button>
+              </Card.Body>
+            </Card>
+          </Col>
 
-      <Card>
+          <Col>
+            <Card xs={12}>
+              <Card.Header>Make changes to your account</Card.Header>
+              <Card.Body>
+                <UpdateView user={user} />
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+
+      <Card xs={12}>
         <Card.Header>Your favorites list</Card.Header>
         <Card.Body>
           <FavoriteMoviesView
@@ -76,20 +97,6 @@ export function ProfileView(props) {
             favoriteMovies={favoriteMovies}
             currentUser={currentUser}
             currentToken={currentToken} />
-        </Card.Body>
-      </Card>
-
-      <Card>
-        <Card.Header>Make changes to your account</Card.Header>
-        <Card.Body>
-          <UpdateView user={user} />
-        </Card.Body>
-      </Card>
-
-      <Card>
-        <Card.Header>Delete your account</Card.Header>
-        <Card.Body>
-          <Button onClick={handleDelete}>Delete account</Button>
         </Card.Body>
       </Card>
 
