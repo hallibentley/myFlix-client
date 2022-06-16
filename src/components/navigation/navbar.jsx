@@ -7,8 +7,8 @@ export function MenuBar({ user }) {
 
   const onLoggedOut = () => {
     localStorage.clear();
-    window.open("/,", "_self");
-  }
+    window.open("/", "_self");
+  };
 
   const isAuth = () => {
     if (typeof window === "undefined") {
@@ -36,7 +36,7 @@ export function MenuBar({ user }) {
               </Nav.Link>
             )}
             {isAuth() && (
-              <Button variant="link" onClick={() => { this.onLoggedOut() }}>
+              <Button variant="link" onClick={() => { onLoggedOut() }}>
                 Logout
               </Button>
             )}

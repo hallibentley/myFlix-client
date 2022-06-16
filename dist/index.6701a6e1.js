@@ -43768,7 +43768,7 @@ var _navbarScss = require("./navbar.scss");
 function MenuBar({ user  }) {
     const onLoggedOut = ()=>{
         localStorage.clear();
-        window.open("/,", "_self");
+        window.open("/", "_self");
     };
     const isAuth = ()=>{
         if (typeof window === "undefined") return false;
@@ -43838,7 +43838,7 @@ function MenuBar({ user  }) {
                             isAuth() && /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
                                 variant: "link",
                                 onClick: ()=>{
-                                    this.onLoggedOut();
+                                    onLoggedOut();
                                 },
                                 __source: {
                                     fileName: "src/components/navigation/navbar.jsx",
@@ -44944,7 +44944,7 @@ function ProfileView(props) {
         }).then(()=>{
             alert(`The account ${user.Username} was successfully deleted`);
             localStorage.clear();
-            window.open('register', '_self');
+            window.open('/register', '_self');
         }).catch((error)=>console.log(error)
         );
     };
@@ -45189,8 +45189,8 @@ function FavoriteMoviesView(props) {
     const favoriteMoviesList = movies.filter((m)=>{
         return favoriteMovies.includes(m._id);
     });
-    const handleMovieDelete = (movieID)=>{
-        _axiosDefault.default.delete(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}/movies/${movieID}`, {
+    const handleMovieDelete = (movieId)=>{
+        _axiosDefault.default.delete(`https://hallibentley-movie-api.herokuapp.com/users/${currentUser}/movies/${movieId}`, {
             headers: {
                 Authorization: `Bearer ${currentToken}`
             }

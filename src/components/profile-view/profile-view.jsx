@@ -51,7 +51,7 @@ export function ProfileView(props) {
       .then(() => {
         alert(`The account ${user.Username} was successfully deleted`)
         localStorage.clear();
-        window.open('register', '_self');
+        window.open('/register', '_self');
       })
       .catch(error => console.log(error))
   }
