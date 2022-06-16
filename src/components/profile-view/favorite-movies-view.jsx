@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import { Button, Card, Row, Col } from 'react-bootstrap';
+import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 
 import './profile-view.scss';
 
@@ -25,32 +25,37 @@ export function FavoriteMoviesView(props) {
 
   return (
     <React.Fragment>
-      {favoriteMoviesList.length === 0 ? (
-        <p>Your favorites list is empty!</p>
-      ) : (
-        favoriteMoviesList.map((movie) => {
-          return (
-            <Col md={3} key={movie._id}>
-              <Card id="movie-card">
-                <Link to={`/movies/${movie._id}`}>
-                  <Card.Img src={movie.ImagePath} crossOrigin='anonymous' />
-                </Link>
-                <Card.Body>
-                  <Card.Title>{movie.Title}</Card.Title>
-                  <Link to={`/movies/${movie._id}`}>
-                    <Button>Open</Button>
-                  </Link>
-                  <Button
-                    onClick={() => { handleMovieDelete(movie._id) }} >
-                    Remove
-                  </Button>
-                </Card.Body>
-              </Card>
-            </Col>
+      <Container>
+        <Row>
+          {favoriteMoviesList.length === 0 ? (
+            <p>Your favorites list is empty!</p>
+          ) : (
+            favoriteMoviesList.map((movie) => {
+              return (
+                <Col md={3} key={movie._id}>
+                  <Card id="movie-card">
+                    <Link to={`/movies/${movie._id}`}>
+                      <Card.Img src={movie.ImagePath} crossOrigin='anonymous' />
+                    </Link>
+                    <Card.Body>
+                      <Card.Title>{movie.Title}</Card.Title>
+                      <Link to={`/movies/${movie._id}`}>
+                        <Button>Open</Button>
+                      </Link>
+                      <Button
+                        onClick={() => { handleMovieDelete(movie._id) }} >
+                        Remove
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              )
+            })
           )
-        })
-      )
-      }
+          }
+        </Row>
+      </Container>
+
     </React.Fragment >
   )
 }

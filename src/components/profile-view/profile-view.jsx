@@ -60,8 +60,8 @@ export function ProfileView(props) {
     <React.Fragment>
       <Container>
         <Row>
-          <Col>
-            <Card xs={12}>
+          <Col xs={12} sm={12} md={6}>
+            <Card>
               <Card.Header>Your user info</Card.Header>
               <Card.Body>
                 <Card.Text> Username: {username} </Card.Text>
@@ -70,7 +70,7 @@ export function ProfileView(props) {
               </Card.Body>
             </Card>
 
-            <Card xs={12}>
+            <Card>
               <Card.Header>Delete your account</Card.Header>
               <Card.Body>
                 <Button onClick={handleDelete}>Delete account</Button>
@@ -79,7 +79,7 @@ export function ProfileView(props) {
           </Col>
 
           <Col>
-            <Card xs={12}>
+            <Card>
               <Card.Header>Make changes to your account</Card.Header>
               <Card.Body>
                 <UpdateView user={user} />
@@ -89,7 +89,7 @@ export function ProfileView(props) {
         </Row>
       </Container>
 
-      <Card xs={12}>
+      <Card>
         <Card.Header>Your favorites list</Card.Header>
         <Card.Body>
           <FavoriteMoviesView
