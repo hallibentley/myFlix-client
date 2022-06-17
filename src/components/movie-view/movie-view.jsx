@@ -2,10 +2,13 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 import './movie-view.scss';
 
 export class MovieView extends React.Component {
+
+
 
   render() {
     const { movie, onBackClick } = this.props;
@@ -32,7 +35,10 @@ export class MovieView extends React.Component {
             </Link>
           </Card.Text>
 
-          <Button onClick={() => onBackClick()} variant="link">Back</Button>
+          <Button
+            onClick={() => onBackClick()}
+            variant="link">Back
+          </Button>
 
         </Card.Body>
       </Card>
