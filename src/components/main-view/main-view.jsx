@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import { connect } from 'react-redux';
 
-import { setMovies } from '../../actions/actions';
+import { setMovies, setUser } from '../../actions/actions';
 
 import MoviesList from '../movies-list/movies-list';
 
@@ -23,12 +23,12 @@ import { ProfileView } from '../profile-view/profile-view';
 
 class MainView extends React.Component {
 
-  constructor() {
-    super();
-    this.state = {
-      user: null
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     user: null
+  //   };
+  // }
 
   getMovies(token) {
     axios.get('http://hallibentley-movie-api.herokuapp.com/movies', {
@@ -45,35 +45,28 @@ class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user')
-      });
       this.getMovies(accessToken);
+      this.props.setUser(localStorage.getItem('user'));
     }
   }
 
   onLoggedIn(authData) {
     console.log(authData);
-    this.setState({
-      user: authData.user.Username
-    });
-
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
+    const { setUser } = this.props;
+    setUser(authData.user.Username);
     this.getMovies(authData.token);
   }
 
   onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    this.setState({
-      user: null
-    });
+    this.props.setUser('');
   }
 
   render() {
-    let { movies } = this.props;
-    let { user } = this.state;
+    let { movies, user } = this.props;
 
     return (
       <Router>
@@ -144,7 +137,10 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return { movies: state.movies }
+  return {
+    movies: state.movies,
+    user: state.user
+  }
 }
 
-export default connect(mapStateToProps, { setMovies })(MainView);
+export default connect(mapStateToProps, { setMovies, setUser })(MainView);
