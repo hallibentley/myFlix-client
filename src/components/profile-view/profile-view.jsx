@@ -6,11 +6,13 @@ import PropTypes from 'prop-types';
 import { FavoriteMoviesView } from './favorite-movies-view';
 import { UpdateView } from './update-view';
 
+import { setUser } from '../../actions/actions';
+
 import './profile-view.scss';
 
 export function ProfileView(props) {
   const { movies } = props;
-  const [user, setUser] = useState(props.user);
+  const [user, setUserData] = useState(props.user);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
   const [username, setUsername] = useState(' ');
   const [password, setPassword] = useState(' ');
@@ -27,7 +29,7 @@ export function ProfileView(props) {
       headers: { Authorization: `Bearer ${currentToken}` }
     })
       .then((response) => {
-        setUser(response.data)
+        setUserData(response.data)
         setFavoriteMovies(response.data.FavoriteMovies)
         setUsername(response.data.Username)
         setEmail(response.data.Email)
