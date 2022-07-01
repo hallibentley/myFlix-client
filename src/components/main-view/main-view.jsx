@@ -23,12 +23,10 @@ import { ProfileView } from '../profile-view/profile-view';
 
 class MainView extends React.Component {
 
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     user: null
-  //   };
-  // }
+  constructor() {
+    super();
+    this.state = {};
+  }
 
   getMovies(token) {
     axios.get('http://hallibentley-movie-api.herokuapp.com/movies', {
