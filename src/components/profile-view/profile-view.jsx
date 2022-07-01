@@ -105,3 +105,5 @@ export function ProfileView(props) {
     </React.Fragment >
   )
 }
+
+export default connect(null, { setUser })(ProfileView)
