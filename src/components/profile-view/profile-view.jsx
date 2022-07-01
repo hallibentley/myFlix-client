@@ -3,6 +3,8 @@ import { Container, Row, Col, Card, Form, FormGroup, Button } from 'react-bootst
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+
 import { FavoriteMoviesView } from './favorite-movies-view';
 import { UpdateView } from './update-view';
 
