@@ -108,4 +108,4 @@ export function ProfileView(props) {
   )
 }
 
-export default connect(null, { setUser })(ProfileView)
+export default connect(mapStateToProps)(ProfileView);
