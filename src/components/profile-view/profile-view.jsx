@@ -107,5 +107,3 @@ export function ProfileView(props) {
     </React.Fragment >
   )
 }
-
-export default connect(mapStateToProps)(ProfileView);
