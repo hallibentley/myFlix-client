@@ -8,9 +8,11 @@ import { Provider } from 'react-redux';
 import moviesApp from './reducers/reducers';
 
 import MainView from './components/main-view/main-view';
+import { RegistrationView } from './components/registration-view/registration-view';
 
 // Import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
+import { RegistrationView } from './components/registration-view/registration-view';
 
 const store = createStore(moviesApp);
 
@@ -21,6 +23,7 @@ class MyFlixApplication extends React.Component {
       <Provider store={store}>
         <Container>
           <MainView />
+          <RegistrationView />
         </Container>
       </Provider>
     );
