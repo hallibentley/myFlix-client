@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Button, Navbar, Nav } from 'react-bootstrap';
-import { connect } from 'react-redux';
 
 import './navbar.scss'
 
@@ -57,5 +56,3 @@ export function MenuBar({ user }) {
     </Navbar>
   );
 }
-
-export default connect(mapStateToProps)(MenuBar);
