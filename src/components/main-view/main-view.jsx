@@ -81,11 +81,10 @@ class MainView extends React.Component {
             }} />
 
             <Route exact path="/register" render={() => {
-              console.log('hi');
-              // if (user) return <Redirect to="/" />
-              // return <Col>
-              //   <RegistrationView />
-              // </Col>
+              if (user) return <Redirect to="/" />
+              return <Col>
+                <RegistrationView />
+              </Col>
             }} />
 
             <Route exact path="/movies/:movieId" render={({ match, history }) => {
