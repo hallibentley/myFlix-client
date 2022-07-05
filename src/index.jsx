@@ -23,7 +23,6 @@ class MyFlixApplication extends React.Component {
       <Provider store={store}>
         <Container>
           <MainView />
-          <RegistrationView />
         </Container>
       </Provider>
     );
