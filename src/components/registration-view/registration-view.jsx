@@ -126,4 +126,3 @@ export function RegistrationView(props) {
     </Row>
   );
 }
-
