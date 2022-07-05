@@ -46,7 +46,7 @@ export function MenuBar({ user }) {
               </Nav.Link>
             )}
             {!isAuth() && (
-              <Nav.Link href="/register">
+              <Nav.Link to="/register">
                 Sign up
               </Nav.Link>
             )}
